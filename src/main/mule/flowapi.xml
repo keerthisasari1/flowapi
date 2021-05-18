@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f9888abc-93c4-416e-bf87-839e9c5371c1" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="flowapiFlow" doc:id="8c4086db-534d-4cd0-a92f-172a5b5e05e3">
+		<http:listener doc:name="Listener" doc:id="9f818174-c194-4e9e-bacc-8c8565f12032" config-ref="HTTP_Listener_config" path="/flow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="985ff32f-e3d4-4f8d-b56e-449946d57d63" message='#["aswini"]'/>
+		<flow-ref doc:name="Flow Reference" doc:id="a876737c-c9a3-49f3-a134-2b2b7c09916e" name="flowapiSub_Flow"/>
+		<logger level="INFO" doc:name="Logger" doc:id="34dcdf42-4e84-402e-8180-f1daaa1c695d" message='#["chinni"]'/>
+	</flow>
+	<sub-flow name="flowapiSub_Flow" doc:id="8151c876-91e3-450f-9b2e-d91bb7650964" >
+		<logger level="INFO" doc:name="Logger" doc:id="491f129f-a0bb-4cf9-a45a-6a804d7c05e7" message='#["kitty"]'/>
+	</sub-flow>
+</mule>
